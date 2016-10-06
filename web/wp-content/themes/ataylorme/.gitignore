@@ -1,0 +1,4 @@
+!.babelrc
+assets/
+node_modules/
+.idea
