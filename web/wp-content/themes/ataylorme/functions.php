@@ -17,7 +17,13 @@ function redirect_to_admin() {
 
 add_action( 'template_redirect', __NAMESPACE__ . '\redirect_to_admin', 99 );
 
+/**
+ * Setup theme
+ */
 function setup_theme() {
+	/**
+	 * Add theme support for post-thumbnails
+	 */
 	add_theme_support( 'post-thumbnails' );
 }
 
