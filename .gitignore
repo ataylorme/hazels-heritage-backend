@@ -27,7 +27,8 @@ web/wp-content/mu-plugins/*
 !web/wp-content/mu-plugins/alter_wpcfm_config_path.php
 !web/wp-content/plugins/
 web/wp-content/plugins/*
-#!web/wp-content/plugins/recipe-cpt
+!web/wp-content/plugins/recipe-cpt
+!web/wp-content/plugins/cmb2-additional-fields
 !web/wp-content/themes
 web/wp-content/themes/*
 !web/wp-content/themes/ataylorme
