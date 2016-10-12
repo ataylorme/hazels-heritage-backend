@@ -54,12 +54,27 @@ function list_recipes() {
 					$main_ingredient = $main_ingredient[0];
 				}
 
-				$return['recipes'][] = array(
+				$thumbnail = get_post_thumbnail_id( $post_id );
+				if ( empty( $thumbnail ) ) {
+					$thumbnail = false;
+				} else {
+					$thumbnail = wp_get_attachment_image_src( $thumbnail, 'thumbnail' );
+					if( is_array($thumbnail) ){
+						$thumbnail = array(
+							'src' => $thumbnail[0],
+							'width' => $thumbnail[1],
+							'height' => $thumbnail[2],
+						);
+					}
+				}
+
+				$return['recipes'][ $post_id ] = array(
 					'ID'              => $post_id,
 					'title'           => get_the_title( $post_id ),
 					'desc'            => $desc,
 					'type'            => $type,
 					'main_ingredient' => $main_ingredient,
+					'thumbnail'       => $thumbnail,
 				);
 
 			endwhile;
