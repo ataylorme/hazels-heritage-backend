@@ -182,6 +182,8 @@ function register_recipe_metabox() {
 					'pounds'      => __( 'Pounds', 'ataylorme' ),
 					'teaspoons'   => __( 'Teaspoons', 'ataylorme' ),
 					'tablespoons' => __( 'Tablespoons', 'ataylorme' ),
+					'grams' => __( 'Grams', 'ataylorme' ),
+					'milligrams' => __( 'Milligrams', 'ataylorme' ),
 					'dash'        => __( 'Pinch/Dash', 'ataylorme' ),
 					'taste'       => __( 'To Taste', 'ataylorme' ),
 				),
