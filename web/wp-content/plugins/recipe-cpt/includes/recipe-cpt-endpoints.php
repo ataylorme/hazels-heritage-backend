@@ -19,7 +19,7 @@ function register_api_hooks() {
 			'id' => array(
 				'validate_callback' => function ( $param, $request, $key ) {
 					global $wpdb;
-					$query = "SELECT ID FROM $wpdb->posts WHERE ID = $param";
+					$query = "SELECT ID FROM $wpdb->posts WHERE ID = $param AND post_status = 'publish' LIMIT 1";
 					$post_id = $wpdb->get_row( $query );
 
 					return ( null === $post_id ) ? false : true;
