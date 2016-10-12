@@ -12,7 +12,7 @@ function register_api_hooks() {
 		'callback' => __NAMESPACE__ . '\list_recipes',
 	) );
 
-	register_rest_route( $namespace, '/recipes/(?P<id>[0-9]+)', array(
+	register_rest_route( $namespace, '/recipes/(?P<id>\d+)', array(
 		'methods'  => 'GET',
 		'callback' => __NAMESPACE__ . '\recipe_details',
 		'args'     => array(
@@ -20,7 +20,6 @@ function register_api_hooks() {
 				'validate_callback' => function ( $param, $request, $key ) {
 					global $wpdb;
 					$query = "SELECT ID FROM $wpdb->posts WHERE ID = $param";
-					error_log( '$query: ' . print_r( $query, true ) );
 					$post_id = $wpdb->get_row( $query );
 
 					return ( null === $post_id ) ? false : true;
