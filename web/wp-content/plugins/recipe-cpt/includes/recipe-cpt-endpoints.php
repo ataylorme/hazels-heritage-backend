@@ -59,10 +59,10 @@ function list_recipes() {
 					$thumbnail = false;
 				} else {
 					$thumbnail = wp_get_attachment_image_src( $thumbnail, 'thumbnail' );
-					if( is_array($thumbnail) ){
+					if ( is_array( $thumbnail ) ) {
 						$thumbnail = array(
-							'src' => $thumbnail[0],
-							'width' => $thumbnail[1],
+							'src'    => $thumbnail[0],
+							'width'  => $thumbnail[1],
 							'height' => $thumbnail[2],
 						);
 					}
@@ -87,9 +87,9 @@ function list_recipes() {
 		set_transient( 'recipes_list', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
 	}
 
-	$response = new \WP_REST_Response( $return );
+$response = new \WP_REST_Response( $return );
 
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
 
-	return $response;
+return $response;
 }
