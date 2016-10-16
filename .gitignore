@@ -20,6 +20,7 @@ private/*
 # WordPress #
 #############
 web/*
+!web/wp-config.php
 !web/wp-content/
 web/wp-content/*
 !web/wp-content/mu-plugins/
