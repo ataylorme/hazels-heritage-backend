@@ -1,5 +1,5 @@
 <?php
-namespace ataylorme\recipes_cpt_cmb2_metabox;
+namespace hazels_heritage\recipes_cpt_cmb2_metabox;
 
 /**
  * Metabox for recipe details
@@ -9,7 +9,7 @@ function register_recipe_metabox() {
 
 	$recipe_details_metabox = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => esc_html__( 'Recipe Details', 'ataylorme' ),
+		'title'        => esc_html__( 'Recipe Details', 'hazels_heritage' ),
 		'object_types' => array( 'recipe', ), // Post type(s)
 		// 'show_on_cb' => 'yourprefix_show_if_front_page', // function should return a bool value
 		// 'context'    => 'normal',
@@ -23,13 +23,13 @@ function register_recipe_metabox() {
 
 
 	$recipe_details_metabox->add_field( array(
-		'name' => esc_html__( 'Description', 'ataylorme' ),
+		'name' => esc_html__( 'Description', 'hazels_heritage' ),
 		'id'   => $prefix . 'desc',
 		'type' => 'textarea_small',
 	) );
 
 	$recipe_details_metabox->add_field( array(
-		'name'       => esc_html__( 'Type', 'ataylorme' ),
+		'name'       => esc_html__( 'Type', 'hazels_heritage' ),
 		'id'         => $prefix . 'type',
 		'type'       => 'taxonomy_select',
 		'taxonomy'   => 'recipe_type', // Taxonomy Slug
@@ -40,7 +40,7 @@ function register_recipe_metabox() {
 	) );
 
 	$recipe_details_metabox->add_field( array(
-		'name'       => esc_html__( 'Main Ingredient', 'ataylorme' ),
+		'name'       => esc_html__( 'Main Ingredient', 'hazels_heritage' ),
 		'id'         => $prefix . 'main_ingredient',
 		'type'       => 'taxonomy_select',
 		'taxonomy'   => 'recipe_main_ingredient', // Taxonomy Slug
@@ -50,14 +50,14 @@ function register_recipe_metabox() {
 	) );
 
 	$recipe_details_metabox->add_field( array(
-		'name' => esc_html__( 'Preparation Duration', 'ataylorme' ),
-		'desc' => esc_html__( 'Time it takes to prepare the recipe, NOT including cooking time', 'ataylorme' ),
+		'name' => esc_html__( 'Preparation Duration', 'hazels_heritage' ),
+		'desc' => esc_html__( 'Time it takes to prepare the recipe, NOT including cooking time', 'hazels_heritage' ),
 		'id'   => $prefix . 'prep_duration',
 		'type' => 'time_duration',
 	) );
 
 	$recipe_details_metabox->add_field( array(
-		'name'    => esc_html__( 'Preparation Instructions', 'ataylorme' ),
+		'name'    => esc_html__( 'Preparation Instructions', 'hazels_heritage' ),
 		'desc'    => '',
 		'id'      => $prefix . 'prep_instructions',
 		'type'    => 'wysiwyg',
@@ -87,14 +87,14 @@ function register_recipe_metabox() {
 	) );
 
 	$recipe_details_metabox->add_field( array(
-		'name' => esc_html__( 'Cooking Duration', 'ataylorme' ),
-		'desc' => esc_html__( 'Time it takes to cook the recipe, NOT including preparation time', 'ataylorme' ),
+		'name' => esc_html__( 'Cooking Duration', 'hazels_heritage' ),
+		'desc' => esc_html__( 'Time it takes to cook the recipe, NOT including preparation time', 'hazels_heritage' ),
 		'id'   => $prefix . 'cooking_duration',
 		'type' => 'time_duration',
 	) );
 
 	$recipe_details_metabox->add_field( array(
-		'name'    => esc_html__( 'Cooking Instructions', 'ataylorme' ),
+		'name'    => esc_html__( 'Cooking Instructions', 'hazels_heritage' ),
 		'desc'    => '',
 		'id'      => $prefix . 'cooking_instructions',
 		'type'    => 'wysiwyg',
@@ -125,8 +125,8 @@ function register_recipe_metabox() {
 
 
 	$recipe_details_metabox->add_field( array(
-		'name'      => esc_html__( 'Source URL', 'ataylorme' ),
-		'desc'      => esc_html__( 'Attributes the recipe to the original author', 'ataylorme' ),
+		'name'      => esc_html__( 'Source URL', 'hazels_heritage' ),
+		'desc'      => esc_html__( 'Attributes the recipe to the original author', 'hazels_heritage' ),
 		'id'        => $prefix . 'source_url',
 		'type'      => 'text_url',
 		'protocols' => array( 'http', 'https' ), // Array of allowed protocols
@@ -139,9 +139,9 @@ function register_recipe_metabox() {
 		'description' => '',
 		'options'     => array(
 			// since version 1.1.4, {#} gets replaced by row number
-			'group_title'   => __( 'Ingredient {#}', 'ataylorme' ),
-			'add_button'    => '<span class="dashicons dashicons-plus" style="position: relative; top: 4px;"></span>' . __( 'Add Another Ingredient', 'ataylorme' ),
-			'remove_button' => '<span class="dashicons dashicons-minus" style="position: relative; top: 3px;"></span>' . __( 'Remove Ingredient', 'ataylorme' ),
+			'group_title'   => __( 'Ingredient {#}', 'hazels_heritage' ),
+			'add_button'    => '<span class="dashicons dashicons-plus" style="position: relative; top: 4px;"></span>' . __( 'Add Another Ingredient', 'hazels_heritage' ),
+			'remove_button' => '<span class="dashicons dashicons-minus" style="position: relative; top: 3px;"></span>' . __( 'Remove Ingredient', 'hazels_heritage' ),
 			// sortable feature is in beta
 			'sortable'      => false,
 		),
@@ -151,7 +151,7 @@ function register_recipe_metabox() {
 		 */
 		'fields'      => array(
 			array(
-				'name'        => __( 'Name', 'ataylorme' ),
+				'name'        => __( 'Name', 'hazels_heritage' ),
 				'description' => '',
 				'id'          => 'name',
 				'type'        => 'text',
@@ -160,7 +160,7 @@ function register_recipe_metabox() {
 				),
 			),
 			array(
-				'name'        => __( 'Amount', 'ataylorme' ),
+				'name'        => __( 'Amount', 'hazels_heritage' ),
 				'description' => '',
 				'id'          => 'amount',
 				'type'        => 'text_number',
@@ -172,20 +172,20 @@ function register_recipe_metabox() {
 				),
 			),
 			array(
-				'name'    => __( 'Unit of Measure', 'ataylorme' ),
+				'name'    => __( 'Unit of Measure', 'hazels_heritage' ),
 				'desc'    => '',
 				'id'      => $prefix . 'unit',
 				'type'    => 'select',
 				'options' => array(
-					'cups'        => __( 'Cups', 'ataylorme' ),
-					'ounces'      => __( 'Ounces', 'ataylorme' ),
-					'pounds'      => __( 'Pounds', 'ataylorme' ),
-					'teaspoons'   => __( 'Teaspoons', 'ataylorme' ),
-					'tablespoons' => __( 'Tablespoons', 'ataylorme' ),
-					'grams' => __( 'Grams', 'ataylorme' ),
-					'milligrams' => __( 'Milligrams', 'ataylorme' ),
-					'dash'        => __( 'Pinch/Dash', 'ataylorme' ),
-					'taste'       => __( 'To Taste', 'ataylorme' ),
+					'cups'        => __( 'Cups', 'hazels_heritage' ),
+					'ounces'      => __( 'Ounces', 'hazels_heritage' ),
+					'pounds'      => __( 'Pounds', 'hazels_heritage' ),
+					'teaspoons'   => __( 'Teaspoons', 'hazels_heritage' ),
+					'tablespoons' => __( 'Tablespoons', 'hazels_heritage' ),
+					'grams' => __( 'Grams', 'hazels_heritage' ),
+					'milligrams' => __( 'Milligrams', 'hazels_heritage' ),
+					'dash'        => __( 'Pinch/Dash', 'hazels_heritage' ),
+					'taste'       => __( 'To Taste', 'hazels_heritage' ),
 				),
 			),
 

@@ -1,5 +1,5 @@
 <?php
-namespace ataylorme\recipe_endpoints;
+namespace hazels_heritage\recipe_endpoints;
 
 /**
  * Register recipe REST endpoints

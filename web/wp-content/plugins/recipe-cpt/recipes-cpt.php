@@ -1,5 +1,5 @@
 <?php
-namespace ataylorme\recipes_cpt;
+namespace hazels_heritage\recipes_cpt;
 
 /**
  * Plugin Name: Recipe CPT

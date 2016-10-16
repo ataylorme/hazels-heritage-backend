@@ -1,5 +1,5 @@
 <?php
-namespace ataylorme\recipes_cpt;
+namespace hazels_heritage\recipes_cpt;
 
 /**
  * Register Recipes Custom Post Type
@@ -7,36 +7,36 @@ namespace ataylorme\recipes_cpt;
 function recipe_cpt() {
 
 	$labels = array(
-		'name'                  => _x( 'Recipes', 'Post Type General Name', 'ataylorme' ),
-		'singular_name'         => _x( 'Recipe', 'Post Type Singular Name', 'ataylorme' ),
-		'menu_name'             => __( 'Recipes', 'ataylorme' ),
-		'name_admin_bar'        => __( 'Recipes', 'ataylorme' ),
-		'archives'              => __( 'Recipes', 'ataylorme' ),
-		'parent_item_colon'     => __( 'Parent Recipe:', 'ataylorme' ),
-		'all_items'             => __( 'All Recipes', 'ataylorme' ),
-		'add_new_item'          => __( 'Add New Recipe', 'ataylorme' ),
-		'add_new'               => __( 'Add New', 'ataylorme' ),
-		'new_item'              => __( 'New Recipe', 'ataylorme' ),
-		'edit_item'             => __( 'Edit Recipe', 'ataylorme' ),
-		'update_item'           => __( 'Update Recipe', 'ataylorme' ),
-		'view_item'             => __( 'View Recipe', 'ataylorme' ),
-		'search_items'          => __( 'Search Recipes', 'ataylorme' ),
-		'not_found'             => __( 'No recipes found', 'ataylorme' ),
-		'not_found_in_trash'    => __( 'No recipes found in Trash', 'ataylorme' ),
-		'featured_image'        => __( 'Featured Image', 'ataylorme' ),
-		'set_featured_image'    => __( 'Set featured image', 'ataylorme' ),
-		'remove_featured_image' => __( 'Remove featured image', 'ataylorme' ),
-		'use_featured_image'    => __( 'Use as featured image', 'ataylorme' ),
-		'insert_into_item'      => __( 'Insert into recipe', 'ataylorme' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this recipe', 'ataylorme' ),
-		'items_list'            => __( 'Items list', 'ataylorme' ),
-		'items_list_navigation' => __( 'Items list navigation', 'ataylorme' ),
-		'filter_items_list'     => __( 'Filter items list', 'ataylorme' ),
+		'name'                  => _x( 'Recipes', 'Post Type General Name', 'hazels_heritage' ),
+		'singular_name'         => _x( 'Recipe', 'Post Type Singular Name', 'hazels_heritage' ),
+		'menu_name'             => __( 'Recipes', 'hazels_heritage' ),
+		'name_admin_bar'        => __( 'Recipes', 'hazels_heritage' ),
+		'archives'              => __( 'Recipes', 'hazels_heritage' ),
+		'parent_item_colon'     => __( 'Parent Recipe:', 'hazels_heritage' ),
+		'all_items'             => __( 'All Recipes', 'hazels_heritage' ),
+		'add_new_item'          => __( 'Add New Recipe', 'hazels_heritage' ),
+		'add_new'               => __( 'Add New', 'hazels_heritage' ),
+		'new_item'              => __( 'New Recipe', 'hazels_heritage' ),
+		'edit_item'             => __( 'Edit Recipe', 'hazels_heritage' ),
+		'update_item'           => __( 'Update Recipe', 'hazels_heritage' ),
+		'view_item'             => __( 'View Recipe', 'hazels_heritage' ),
+		'search_items'          => __( 'Search Recipes', 'hazels_heritage' ),
+		'not_found'             => __( 'No recipes found', 'hazels_heritage' ),
+		'not_found_in_trash'    => __( 'No recipes found in Trash', 'hazels_heritage' ),
+		'featured_image'        => __( 'Featured Image', 'hazels_heritage' ),
+		'set_featured_image'    => __( 'Set featured image', 'hazels_heritage' ),
+		'remove_featured_image' => __( 'Remove featured image', 'hazels_heritage' ),
+		'use_featured_image'    => __( 'Use as featured image', 'hazels_heritage' ),
+		'insert_into_item'      => __( 'Insert into recipe', 'hazels_heritage' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this recipe', 'hazels_heritage' ),
+		'items_list'            => __( 'Items list', 'hazels_heritage' ),
+		'items_list_navigation' => __( 'Items list navigation', 'hazels_heritage' ),
+		'filter_items_list'     => __( 'Filter items list', 'hazels_heritage' ),
 	);
 
 	$args = array(
-		'label'               => __( 'Recipe', 'ataylorme' ),
-		'description'         => __( 'Food Recipes', 'ataylorme' ),
+		'label'               => __( 'Recipe', 'hazels_heritage' ),
+		'description'         => __( 'Food Recipes', 'hazels_heritage' ),
 		'labels'              => $labels,
 		'supports'            => array(
 			'title', /*'editor', 'excerpt',*/
