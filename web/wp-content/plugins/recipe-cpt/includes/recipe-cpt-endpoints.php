@@ -22,7 +22,7 @@ function register_api_hooks() {
 						'post_type'           => 'recipe',
 						'posts_per_page'      => 1,
 						'post_status'         => 'publish',
-						'post__in'            => (int) $param,
+						'post__in'            => array( (int) $param ),
 						'ignore_sticky_posts' => true,
 					);
 
