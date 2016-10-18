@@ -350,6 +350,9 @@ function recipe_details( $request ) {
 
 		foreach ( $meta_fields as $meta_field ) {
 			$value                 = get_post_meta( $post_id, 'recipe_' . $meta_field, true );
+			if( false !== stripos($meta_field, 'instructions') ){
+				$value = wpautop($value);
+			}
 			$return[ $meta_field ] = ( empty( $value ) ) ? false : $value;
 		}
 
