@@ -213,7 +213,7 @@ function list_main_ingredients() {
 					'has_children' => ( 0 === $term->parent ) ? false : true,
 				);
 
-				$return['main_ingredients'][] = $term_details;
+				$return['main_ingredients'][$term->term_id] = $term_details;
 
 			endforeach;
 
@@ -259,7 +259,7 @@ function list_recipe_types() {
 					'has_children' => ( 0 === $term->parent ) ? false : true,
 				);
 
-				$return['recipe_types'][] = $term_details;
+				$return['recipe_types'][$term->term_id] = $term_details;
 
 			endforeach;
 
