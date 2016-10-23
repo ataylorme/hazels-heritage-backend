@@ -106,23 +106,40 @@ function list_recipes() {
 
 	if ( 0 || false === ( $return = get_transient( 'recipes_list' ) ) || IS_LOCAL ) {
 
-		$return = array(
-			'total'   => 0,
-			'recipes' => array(),
-		);
-
 		$args = array(
 			'post_type'      => 'recipe',
 			'post_status'    => 'publish',
 			'posts_per_page' => 25,
-			'nopaging'       => true,
+		);
+		
+		if( isset( $_GET['per_page'] ) ){
+			$per_page = (int) $_GET['per_page'];
+			if( $per_page ){
+				$args['posts_per_page'] = $per_page;
+			}
+		}
+
+		if( isset( $_GET['paged'] ) ){
+			$paged = (int) $_GET['paged'];
+			if( $paged ){
+				$args['paged'] = $paged;
+			}
+		}
+
+		$return = array(
+			'total'   => 0,
+			'count'   => 0,
+			'recipes' => array(),
+			'per_page' => $args['posts_per_page'],
+			'paged' => $args['paged'],
 		);
 
 		$the_query = new \WP_Query( $args );
 
 		if ( $the_query->have_posts() ):
 
-			$return['total'] = (int) $the_query->post_count;
+			$return['total'] = (int) $the_query->found_posts;
+			$return['count'] = (int) $the_query->post_count;
 
 			while ( $the_query->have_posts() ):
 				$the_query->the_post();
