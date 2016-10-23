@@ -168,7 +168,7 @@ function register_recipe_metabox() {
 					'required' => 'required',
 					'min'      => 0,
 					'max'      => 60,
-					'step'     => '0.25',
+					'step'     => '0.01',
 				),
 			),
 			array(
