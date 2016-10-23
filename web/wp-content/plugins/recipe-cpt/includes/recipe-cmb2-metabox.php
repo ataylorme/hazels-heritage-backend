@@ -187,6 +187,9 @@ function register_recipe_metabox() {
 					'dash'        => __( 'Pinch/Dash', 'hazels_heritage' ),
 					'taste'       => __( 'To Taste', 'hazels_heritage' ),
 				),
+				'attributes'  => array(
+					'required' => 'required',
+				),
 			),
 
 		),
