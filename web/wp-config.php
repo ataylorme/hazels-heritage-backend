@@ -44,8 +44,8 @@ define( 'DISALLOW_FILE_MODS', true );
 /*
  * Define site URL
  */
-define( 'WP_HOME', getenv( 'WP_HOME' ) !== false ? getenv( 'WP_HOME' ) : 'https://www.hazelsheritage.com/' );
-define( 'WP_SITEURL', getenv( 'WP_SITEURL' ) !== false ? getenv( 'WP_SITEURL' ) : 'https://www.hazelsheritage.com/wp/' );
+define( 'WP_HOME', getenv( 'WP_HOME' ) !== false ? getenv( 'WP_HOME' ) : 'https://backend.hazelsheritage.com/' );
+define( 'WP_SITEURL', getenv( 'WP_SITEURL' ) !== false ? getenv( 'WP_SITEURL' ) : 'https://backend.hazelsheritage.com/wp/' );
 
 /**
  * Set Database Details
@@ -75,7 +75,7 @@ define( 'WP_POST_REVISIONS', 3 );
  * Define wp-content directory outside of WordPress directory
  */
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-define( 'WP_CONTENT_URL', getenv( 'WP_CONTENT_URL' ) !== false ? getenv( 'WP_CONTENT_URL' ) : 'https://www.hazelsheritage.com/wp-content' );
+define( 'WP_CONTENT_URL', getenv( 'WP_CONTENT_URL' ) !== false ? getenv( 'WP_CONTENT_URL' ) : 'https://backend.hazelsheritage.com/wp-content' );
 
 /**#@+
  * Authentication Unique Keys and Salts.
