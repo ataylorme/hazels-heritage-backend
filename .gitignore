@@ -32,7 +32,7 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/cmb2-additional-fields
 !web/wp-content/themes
 web/wp-content/themes/*
-!web/wp-content/themes/ataylorme
+!web/wp-content/themes/hazels-heritage
 
 # Packages #
 ############
