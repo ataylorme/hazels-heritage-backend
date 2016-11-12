@@ -20,7 +20,7 @@ if [ ! -d "$HOME/digital-ocean" ]
 then
 	# Clone the droplet directory
 	echo -e "\n${txtylw}Cloning droplet into $HOME/digital-ocean  ${txtrst}"
-	scp -r root@${DROPLET_IP}:/srv/users/serverpilot/apps/backend $HOME/digital-ocean
+	rsync -a root@${DROPLET_IP}:/srv/users/serverpilot/apps/backend/* $HOME/digital-ocean/
 fi
 
 cd digital-ocean
@@ -65,5 +65,5 @@ find . -name 'node_modules' -type d -exec rm -rf {} \;
 # Deploy to droplet
 if [ $CIRCLE_BRANCH = "master" ]
 then
-	scp -r $HOME/digital-ocean root@${DROPLET_IP}:/srv/users/serverpilot/apps/backend/
+	rsync -a $HOME/digital-ocean/* root@${DROPLET_IP}:/srv/users/serverpilot/apps/backend/
 fi
