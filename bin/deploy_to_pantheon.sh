@@ -133,6 +133,10 @@ cp $BUILD_DIR/wp-cli.yml .
 echo -e "\n${txtylw}Rsyncing $BUILD_DIR/vendor ${txtrst}"
 rsync -a $BUILD_DIR/vendor/* ./vendor/
 
+echo -e "\n${txtylw}Rsyncing $BUILD_DIR/config ${txtrst}"
+rsync -a $BUILD_DIR/config/* ./config/
+
+
 # Some plugins have .svn directories, nuke 'em
 echo -e "\n${txtylw}Removing all '.svn' directories${txtrst}"
 find . -name '.svn' -type d -exec rm -rf {} \;
