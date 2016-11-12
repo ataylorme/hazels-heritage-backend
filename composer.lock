@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "26ad3aa76afa6f5592d012cfd5f2b383",
-    "content-hash": "f0382175b4bdfa75bdc4837969a3300c",
+    "hash": "4edeae6a0da3a64143a8d9fd1ef79fee",
+    "content-hash": "45ced75f98aba077077a9884f179dd30",
     "packages": [
         {
             "name": "composer/installers",
@@ -120,12 +120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "a496bee5948c208ad07a8db89e722c5cae5c40ac"
+                "reference": "7b4a6dcacc866532ff0c05049391bbc2fee05d37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/a496bee5948c208ad07a8db89e722c5cae5c40ac",
-                "reference": "a496bee5948c208ad07a8db89e722c5cae5c40ac",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/7b4a6dcacc866532ff0c05049391bbc2fee05d37",
+                "reference": "7b4a6dcacc866532ff0c05049391bbc2fee05d37",
                 "shasum": ""
             },
             "require": {
@@ -149,7 +149,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2016-10-06 15:31:39"
+            "time": "2016-10-29 09:31:39"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -308,7 +308,7 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.2.1",
+            "version": "2.2.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cmb2/",
