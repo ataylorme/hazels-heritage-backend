@@ -38,8 +38,10 @@ if ( file_exists( $rootPath . '/.env' ) ) {
 /**
  * Disallow on server file edits
  */
-define( 'DISALLOW_FILE_EDIT', true );
-define( 'DISALLOW_FILE_MODS', true );
+if( !IS_LOCAL ){
+    define( 'DISALLOW_FILE_EDIT', true );
+    define( 'DISALLOW_FILE_MODS', true );
+}
 
 /*
  * Define site URL
