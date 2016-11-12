@@ -45,4 +45,4 @@ deployment:
   pantheon:
     branch: /.*/
     commands:
-      - ./bin/deploy_to_pantheon.sh
+      - ./bin/deploy.sh
