@@ -142,7 +142,7 @@ echo -e "\n${txtylw}Removing all 'node_modules' directories${txtrst}"
 find . -name 'node_modules' -type d -exec rm -rf {} \;
 
 # Remove wp-content/uploads if it exists
-# Checking in Pantheon's files symlink is bad new
+# Checking in Pantheon's files symlink is bad news
 if [ -d "$HOME/pantheon/web/wp-content/uploads" ]
 then
 	echo -e "\n${txtylw}Removing 'web/wp-content/uploads' symlink${txtrst}"
