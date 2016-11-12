@@ -65,5 +65,5 @@ find . -name 'node_modules' -type d -exec rm -rf {} \;
 # Deploy to droplet
 if [ $CIRCLE_BRANCH = "master" ]
 then
-	scp -r $HOME/digital-ocean root@${DROPLET_IP}:/srv/users/serverpilot/apps/backend
+	scp -r $HOME/digital-ocean root@${DROPLET_IP}:/srv/users/serverpilot/apps/backend/
 fi
