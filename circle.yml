@@ -43,7 +43,7 @@ test:
     - ls
 
 deployment:
-  pantheon:
-    branch: /.*/
+  prod:
+    branch: master
     commands:
       - ./bin/deploy.sh
