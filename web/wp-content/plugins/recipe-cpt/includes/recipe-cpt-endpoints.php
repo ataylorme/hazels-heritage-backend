@@ -24,7 +24,7 @@ function add_access_cache_headers( $response ) {
 	 */
 
 	$response->header( 'Surrogate-Control', 'max-age=' . apply_filters( 'api_max_age', DAY_IN_SECONDS ) );
-	$response->header( 'Cache-Control', 'max-age=' . apply_filters( 'api_max_age', 60 ) );
+	$response->header( 'Cache-Control', 'max-age=60' );
 
 	return $response;
 }
