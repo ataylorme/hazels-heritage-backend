@@ -2,6 +2,34 @@
 namespace hazels_heritage\recipe_endpoints;
 
 /**
+ * Adds access/cache headers to a REST API response object
+ *
+ * @param $response object REST API response object
+ *
+ * @return $response object
+ */
+function add_access_cache_headers( $response ) {
+
+	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+
+	/*
+	 * The goal is to ensure that API responses will reach clients in a timely manner,
+	 * but we also want to ensure that clients always have the most up-to-date information.
+	 * The first constraint can be solved by using the surrogate-control header, and the
+	 * second constraint can be solved by using the cache-control header:
+	 *
+	 * These headers tell the CDN that it is allowed to cache the content for up to one day.
+	 * In addition, the headers tell the client that it is allowed to cache the content for 60 seconds,
+	 * and that it should go back to its source of truth (the CDN) after 60 seconds.
+	 */
+
+	$response->header( 'Surrogate-Control', 'max-age=' . apply_filters( 'api_max_age', DAY_IN_SECONDS ) );
+	$response->header( 'Cache-Control', 'max-age=' . apply_filters( 'api_max_age', 60 ) );
+
+	return $response;
+}
+
+/**
  * Register recipe REST endpoints
  */
 function register_api_hooks() {
@@ -65,7 +93,7 @@ function register_api_hooks() {
 			),
 		),
 	) );
-	
+
 	register_rest_route( $namespace, '/recipe-types/', array(
 		'methods'  => 'GET',
 		'callback' => __NAMESPACE__ . '\list_recipe_types',
@@ -111,27 +139,27 @@ function list_recipes() {
 			'post_status'    => 'publish',
 			'posts_per_page' => 25,
 		);
-		
-		if( isset( $_GET['per_page'] ) ){
+
+		if ( isset( $_GET['per_page'] ) ) {
 			$per_page = (int) $_GET['per_page'];
-			if( $per_page ){
+			if ( $per_page ) {
 				$args['posts_per_page'] = $per_page;
 			}
 		}
 
-		if( isset( $_GET['paged'] ) ){
+		if ( isset( $_GET['paged'] ) ) {
 			$paged = (int) $_GET['paged'];
-			if( $paged ){
+			if ( $paged ) {
 				$args['paged'] = $paged;
 			}
 		}
 
 		$return = array(
-			'total'   => 0,
-			'count'   => 0,
-			'recipes' => array(),
+			'total'    => 0,
+			'count'    => 0,
+			'recipes'  => array(),
 			'per_page' => $args['posts_per_page'],
-			'paged' => $args['paged'],
+			'paged'    => $args['paged'],
 		);
 
 		$the_query = new \WP_Query( $args );
@@ -195,8 +223,7 @@ function list_recipes() {
 	}
 
 	$response = new \WP_REST_Response( $return );
-
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+	$response = add_access_cache_headers( $response );
 
 	return $response;
 }
@@ -230,7 +257,7 @@ function list_main_ingredients() {
 					'has_children' => ( 0 === $term->parent ) ? false : true,
 				);
 
-				$return['main_ingredients'][$term->term_id] = $term_details;
+				$return['main_ingredients'][ $term->term_id ] = $term_details;
 
 			endforeach;
 
@@ -241,8 +268,7 @@ function list_main_ingredients() {
 	}
 
 	$response = new \WP_REST_Response( $return );
-
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+	$response = add_access_cache_headers( $response );
 
 	return $response;
 }
@@ -252,7 +278,7 @@ function list_recipe_types() {
 	if ( 0 || false === ( $return = get_transient( 'recipe_types_list' ) ) || IS_LOCAL ) {
 
 		$return = array(
-			'total'            => 0,
+			'total'        => 0,
 			'recipe_types' => array(),
 		);
 
@@ -276,7 +302,7 @@ function list_recipe_types() {
 					'has_children' => ( 0 === $term->parent ) ? false : true,
 				);
 
-				$return['recipe_types'][$term->term_id] = $term_details;
+				$return['recipe_types'][ $term->term_id ] = $term_details;
 
 			endforeach;
 
@@ -287,8 +313,7 @@ function list_recipe_types() {
 	}
 
 	$response = new \WP_REST_Response( $return );
-
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+	$response = add_access_cache_headers( $response );
 
 	return $response;
 }
@@ -384,8 +409,7 @@ function list_main_ingredient_recipes( $request ) {
 	}
 
 	$response = new \WP_REST_Response( $return );
-
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+	$response = add_access_cache_headers( $response );
 
 	return $response;
 }
@@ -481,8 +505,7 @@ function list_recipe_type_recipes( $request ) {
 	}
 
 	$response = new \WP_REST_Response( $return );
-
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+	$response = add_access_cache_headers( $response );
 
 	return $response;
 }
@@ -542,7 +565,7 @@ function recipe_details( $request ) {
 
 		foreach ( $meta_fields as $meta_field ) {
 			$value = get_post_meta( $post_id, 'recipe_' . $meta_field, true );
-			
+
 			$return[ $meta_field ] = ( empty( $value ) ) ? false : $value;
 		}
 
@@ -551,8 +574,7 @@ function recipe_details( $request ) {
 	}
 
 	$response = new \WP_REST_Response( $return );
-
-	$response->header( 'Access-Control-Allow-Origin', apply_filters( 'access_control_allow_origin', '*' ) );
+	$response = add_access_cache_headers( $response );
 
 	return $response;
 }
