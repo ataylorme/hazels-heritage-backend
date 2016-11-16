@@ -47,3 +47,7 @@ deployment:
     branch: master
     commands:
       - ./bin/deploy.sh
+  pantheon:
+    branch: pantheon
+    commands:
+      - ./bin/deploy_to_pantheon.sh
