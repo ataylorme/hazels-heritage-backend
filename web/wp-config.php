@@ -162,10 +162,11 @@ if ( isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ):
 		define( 'WP_SITEURL', $scheme . '://' . $_SERVER['HTTP_HOST'] . '/wp' );
 
 		/*
-		 * Define wp-content directory outside of WordPress directory
-		 */
+		* Define wp-content directory outside of WordPress directory
+		*/
 		define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
-		define( 'WP_CONTENT_URL', $scheme . '://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
+		define( 'WP_CONTENT_URL', WP_HOME . '/wp-content' );
+
 	}
 	// Don't show deprecations; useful under PHP 5.5
 	error_reporting( E_ALL ^ E_DEPRECATED );
