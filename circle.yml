@@ -44,10 +44,6 @@ test:
 
 deployment:
   prod:
-    branch: master
-    commands:
-      - ./bin/deploy.sh
-  pantheon:
-    branch: pantheon
+    branch: *
     commands:
       - ./bin/deploy_to_pantheon.sh

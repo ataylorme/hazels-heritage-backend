@@ -150,11 +150,11 @@ git add -A --force .
 git commit -m "Circle CI build $CIRCLE_BUILD_NUM by $CIRCLE_PROJECT_USERNAME" -m "$COMMIT_MESSAGE"
 
 # Force push to Pantheon
-if [[ $CIRCLE_BRANCH = "master" || $CIRCLE_BRANCH = "pantheon" ]]
+if [[ $CIRCLE_BRANCH != "master" ]]
 then
-	echo -e "\n${txtgrn}Pushing the master branch to Pantheon ${txtrst}"
-	git push -u origin master --force
-else
 	echo -e "\n${txtgrn}Pushing the ${normalize_branch} branch to Pantheon ${txtrst}"
 	git push -u origin $normalize_branch --force
+else
+	echo -e "\n${txtgrn}Pushing the master branch to Pantheon ${txtrst}"
+	git push -u origin master --force
 fi
