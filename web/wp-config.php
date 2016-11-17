@@ -36,10 +36,17 @@ if ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) && file_exists( $rootPath . '/.env
 }
 
 /**
+ * Define IS_LOCAL
+ */
+define( 'IS_LOCAL', ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) && getenv( 'IS_LOCAL' ) !== false ) ? true : false );
+
+/**
  * Disallow on server file edits
  */
-define( 'DISALLOW_FILE_EDIT', true );
-define( 'DISALLOW_FILE_MODS', true );
+if ( ! IS_LOCAL ) {
+	define( 'DISALLOW_FILE_EDIT', true );
+	define( 'DISALLOW_FILE_MODS', true );
+}
 
 /**
  * Force SSL
@@ -73,7 +80,6 @@ if ( ! isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ):
 	 * Set debug modes
 	 */
 	define( 'WP_DEBUG', getenv( 'WP_DEBUG' ) === 'true' ? true : false );
-	define( 'IS_LOCAL', getenv( 'IS_LOCAL' ) !== false ? true : false );
 
 	/*
 	 * Define wp-content directory outside of WordPress directory
