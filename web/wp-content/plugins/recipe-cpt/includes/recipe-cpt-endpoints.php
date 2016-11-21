@@ -2,6 +2,18 @@
 namespace hazels_heritage\recipe_endpoints;
 
 /**
+ * Disable default REST API endpoints
+ * This is a read-only API and makes
+ * no use of anything other than the
+ * endpoints below
+ */
+function disable_default_rest_routes() {
+	remove_filter( 'rest_api_init', 'create_initial_rest_routes' );
+}
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\disable_default_rest_routes' );
+
+/**
  * Adds access/cache headers to a REST API response object
  *
  * @param $response object REST API response object
