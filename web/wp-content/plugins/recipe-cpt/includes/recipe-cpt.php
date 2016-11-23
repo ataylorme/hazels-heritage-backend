@@ -66,7 +66,7 @@ function recipe_cpt() {
 			'read_private_posts' => 'read_private_recipes',
 			'create_posts'       => 'edit_recipes',
 		),
-		'map_meta_cap'        => false,
+		'map_meta_cap'        => true,
 	);
 	register_post_type( 'recipe', $args );
 
