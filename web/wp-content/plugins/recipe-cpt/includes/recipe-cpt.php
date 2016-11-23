@@ -55,7 +55,7 @@ function recipe_cpt() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'rewrite'             => false,
-		'capability_type'     => 'page',
+		'capability_type'     => array('recipe', 'recipes') ,
 	);
 	register_post_type( 'recipe', $args );
 
