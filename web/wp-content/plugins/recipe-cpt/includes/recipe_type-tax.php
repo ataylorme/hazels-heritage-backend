@@ -39,10 +39,10 @@ function recipe_type_tax() {
 		'show_in_nav_menus' => false,
 		'show_tagcloud'     => false,
 		'rewrite'           => false,
-		'capabilities' => array(
+		'capabilities'      => array(
 			'assign_terms' => 'edit_recipes',
 			'manage_terms' => 'manage_categories',
-			'edit_terms' => 'manage_categories',
+			'edit_terms'   => 'manage_categories',
 			'delete_terms' => 'manage_categories',
 		),
 		/**

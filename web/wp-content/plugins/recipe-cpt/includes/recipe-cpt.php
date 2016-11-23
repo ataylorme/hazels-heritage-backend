@@ -48,6 +48,7 @@ function recipe_cpt() {
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-carrot',
 		'show_in_admin_bar'   => true,
 		'show_in_nav_menus'   => true,
 		'can_export'          => true,
@@ -55,7 +56,7 @@ function recipe_cpt() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'rewrite'             => false,
-		'capability_type'     => array('recipe', 'recipes') ,
+		'capability_type'     => array( 'recipe', 'recipes' ),
 	);
 	register_post_type( 'recipe', $args );
 

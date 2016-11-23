@@ -42,7 +42,7 @@ function recipe_main_ingredient_tax() {
 		'capabilities' => array(
 			'assign_terms' => 'edit_recipes',
 			'manage_terms' => 'manage_categories',
-			'edit_terms' => 'manage_categories',
+			'edit_terms'   => 'manage_categories',
 			'delete_terms' => 'manage_categories',
 		),
 		/**
