@@ -49,6 +49,7 @@
     "roots/wp-password-bcrypt": "^1.0.0",
     "wpackagist-plugin/wp-cfm": "^1.4.5",
     "wpackagist-plugin/cmb2": "^2.2.3.1",
+    "wpackagist-plugin/members": "^1.1.2",
     "wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.10.2"
   },
   "config": {
