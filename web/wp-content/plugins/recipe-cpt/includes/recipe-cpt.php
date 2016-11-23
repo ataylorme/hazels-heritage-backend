@@ -57,16 +57,18 @@ function recipe_cpt() {
 		'publicly_queryable'  => true,
 		'rewrite'             => false,
 		'capabilities'        => array(
-			'edit_post'          => 'edit_recipe',
-			'read_post'          => 'read_recipe',
-			'delete_post'        => 'delete_recipe',
-			'edit_posts'         => 'edit_recipes',
-			'edit_others_posts'  => 'edit_others_recipes',
-			'publish_posts'      => 'publish_recipes',
-			'read_private_posts' => 'read_private_recipes',
-			'create_posts'       => 'edit_recipes',
+			'publish_posts'       => 'publish_recipes',
+			'edit_posts'          => 'edit_recipes',
+			'edit_others_posts'   => 'edit_others_recipes',
+			'delete_posts'        => 'delete_recipes',
+			'delete_others_posts' => 'delete_others_recipes',
+			'read_private_posts'  => 'read_private_recipes',
+			'edit_post'           => 'edit_recipe',
+			'delete_post'         => 'delete_recipe',
+			'read_post'           => 'read_recipe',
 		),
 		'map_meta_cap'        => true,
+		'capability_type'     => 'recipe',
 	);
 	register_post_type( 'recipe', $args );
 
