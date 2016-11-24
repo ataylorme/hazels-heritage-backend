@@ -172,24 +172,32 @@ function register_recipe_metabox() {
 				),
 			),
 			array(
-				'name'    => __( 'Unit of Measure', 'hazels_heritage' ),
-				'desc'    => '',
-				'id'      => $prefix . 'unit',
-				'type'    => 'select',
-				'options' => array(
+				'name'       => __( 'Unit of Measure', 'hazels_heritage' ),
+				'desc'       => '',
+				'id'         => $prefix . 'unit',
+				'type'       => 'select',
+				'options'    => array(
+					false         => __( 'Select a unit of measure', 'hazels_heritage' ),
 					'cups'        => __( 'Cups', 'hazels_heritage' ),
 					'ounces'      => __( 'Ounces', 'hazels_heritage' ),
 					'pounds'      => __( 'Pounds', 'hazels_heritage' ),
 					'teaspoons'   => __( 'Teaspoons', 'hazels_heritage' ),
 					'tablespoons' => __( 'Tablespoons', 'hazels_heritage' ),
-					'grams' => __( 'Grams', 'hazels_heritage' ),
-					'milligrams' => __( 'Milligrams', 'hazels_heritage' ),
+					'grams'       => __( 'Grams', 'hazels_heritage' ),
+					'milligrams'  => __( 'Milligrams', 'hazels_heritage' ),
 					'dash'        => __( 'Pinch/Dash', 'hazels_heritage' ),
 					'taste'       => __( 'To Taste', 'hazels_heritage' ),
+					'other'       => __( 'Other (specify below)', 'hazels_heritage' ),
 				),
-				'attributes'  => array(
+				'attributes' => array(
 					'required' => 'required',
 				),
+			),
+			array(
+				'name' => __( 'Custom Unit of Measure', 'hazels_heritage' ),
+				'desc' => __( 'Enter the unit of measure if "other" was selected above', 'hazels_heritage' ),
+				'id'   => $prefix . 'custom_unit',
+				'type' => 'text',
 			),
 
 		),
