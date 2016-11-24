@@ -179,6 +179,7 @@ function list_recipes() {
 
 			$return['total'] = (int) $the_query->found_posts;
 			$return['count'] = (int) $the_query->post_count;
+			$i               = 1;
 
 			while ( $the_query->have_posts() ):
 				$the_query->the_post();
@@ -213,7 +214,7 @@ function list_recipes() {
 					}
 				}
 
-				$return['recipes'][ $post_id ] = array(
+				$return['recipes'][ $i ] = array(
 					'ID'              => $post_id,
 					'title'           => get_the_title( $post_id ),
 					'desc'            => $desc,
@@ -221,6 +222,8 @@ function list_recipes() {
 					'main_ingredient' => $main_ingredient,
 					'thumbnail'       => $thumbnail,
 				);
+
+				$i ++;
 
 			endwhile;
 
@@ -366,6 +369,8 @@ function list_main_ingredient_recipes( $request ) {
 
 			$return['total'] = (int) $the_query->post_count;
 
+			$i = 1;
+
 			while ( $the_query->have_posts() ):
 				$the_query->the_post();
 				$post_id = get_the_ID();
@@ -399,7 +404,7 @@ function list_main_ingredient_recipes( $request ) {
 					}
 				}
 
-				$return['recipes'][ $post_id ] = array(
+				$return['recipes'][ $i ] = array(
 					'ID'              => $post_id,
 					'title'           => get_the_title( $post_id ),
 					'desc'            => $desc,
@@ -407,6 +412,8 @@ function list_main_ingredient_recipes( $request ) {
 					'main_ingredient' => $main_ingredient,
 					'thumbnail'       => $thumbnail,
 				);
+
+				$i ++;
 
 			endwhile;
 
@@ -462,6 +469,8 @@ function list_recipe_type_recipes( $request ) {
 
 			$return['total'] = (int) $the_query->post_count;
 
+			$i = 1;
+
 			while ( $the_query->have_posts() ):
 				$the_query->the_post();
 				$post_id = get_the_ID();
@@ -495,7 +504,7 @@ function list_recipe_type_recipes( $request ) {
 					}
 				}
 
-				$return['recipes'][ $post_id ] = array(
+				$return['recipes'][ $i ] = array(
 					'ID'              => $post_id,
 					'title'           => get_the_title( $post_id ),
 					'desc'            => $desc,
@@ -503,6 +512,8 @@ function list_recipe_type_recipes( $request ) {
 					'main_ingredient' => $main_ingredient,
 					'thumbnail'       => $thumbnail,
 				);
+
+				$i ++;
 
 			endwhile;
 
