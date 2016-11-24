@@ -179,6 +179,8 @@ function register_recipe_metabox() {
 				'options'    => array(
 					false         => __( 'Select a unit of measure', 'hazels_heritage' ),
 					'cups'        => __( 'Cups', 'hazels_heritage' ),
+					'gallons'     => __( 'Quarts', 'hazels_heritage' ),
+					'quarts'      => __( 'Gallons', 'hazels_heritage' ),
 					'ounces'      => __( 'Ounces', 'hazels_heritage' ),
 					'pounds'      => __( 'Pounds', 'hazels_heritage' ),
 					'teaspoons'   => __( 'Teaspoons', 'hazels_heritage' ),
