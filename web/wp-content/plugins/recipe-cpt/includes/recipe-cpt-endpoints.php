@@ -18,7 +18,7 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\disable_default_rest_routes' );
  *
  * @param $response object REST API response object
  *
- * @return $response object
+ * @return object $response
  */
 function add_access_cache_headers( $response ) {
 
