@@ -49,6 +49,11 @@ function register_api_hooks() {
 	register_rest_route( $namespace, '/recipes/', array(
 		'methods'  => 'GET',
 		'callback' => __NAMESPACE__ . '\list_recipes',
+		'args'     => array(
+			'query_args' => array(
+				'default' => array(),
+			),
+		),
 	) );
 
 	register_rest_route( $namespace, '/recipes/(?P<id>\d+)', array(
@@ -141,100 +146,126 @@ function register_api_hooks() {
 
 add_action( 'rest_api_init', __NAMESPACE__ . '\register_api_hooks' );
 
-function list_recipes() {
+function list_recipes( $request ) {
 
-	if ( 0 || false === ( $return = get_transient( 'recipes_list' ) ) || IS_LOCAL ) {
+	$args = $request['query_args'];
 
-		$args = array(
-			'post_type'      => 'recipe',
-			'post_status'    => 'publish',
-			'posts_per_page' => 25,
-		);
+	$recipe_args = array(
+		'post_type'           => 'recipe',
+		'post_status'         => 'publish',
+		'posts_per_page'      => 25,
+		'ignore_sticky_posts' => true,
+		'tax_query'           => array(),
+	);
 
-		if ( isset( $_GET['per_page'] ) ) {
-			$per_page = (int) $_GET['per_page'];
-			if ( $per_page ) {
-				$args['posts_per_page'] = $per_page;
-			}
+	$standard_params = array(
+		'order',
+		'orderby',
+		'author',
+		'post_type',
+		'ignore_sticky_posts',
+		'paged',
+		'page',
+		'nopaging',
+		'posts_per_page',
+		's',
+	);
+
+	foreach ( $standard_params as $standard_param ) {
+		if ( isset( $args[ $standard_param ] ) && ! empty( $args[ $standard_param ] ) ) {
+			$recipe_args[ $standard_param ] = $args[ $standard_param ];
 		}
-
-		if ( isset( $_GET['paged'] ) ) {
-			$paged = (int) $_GET['paged'];
-			if ( $paged ) {
-				$args['paged'] = $paged;
-			}
-		}
-
-		$return = array(
-			'total'    => 0,
-			'count'    => 0,
-			'recipes'  => array(),
-			'per_page' => $args['posts_per_page'],
-			'paged'    => $args['paged'],
-		);
-
-		$the_query = new \WP_Query( $args );
-
-		if ( $the_query->have_posts() ):
-
-			$return['total'] = (int) $the_query->found_posts;
-			$return['count'] = (int) $the_query->post_count;
-			$i               = 1;
-
-			while ( $the_query->have_posts() ):
-				$the_query->the_post();
-				$post_id = get_the_ID();
-
-				$desc = get_post_meta( $post_id, 'recipe_desc', true );
-				$desc = ( empty( $desc ) ) ? false : $desc;
-
-				$type = wp_get_post_terms( $post_id, 'recipe_type' );
-				$type = ( empty( $type ) ) ? false : $type;
-				if ( is_array( $type ) && 1 === count( $type ) ) {
-					$type = $type[0];
-				}
-
-				$main_ingredient = wp_get_post_terms( $post_id, 'recipe_main_ingredient' );
-				$main_ingredient = ( empty( $main_ingredient ) ) ? false : $main_ingredient;
-				if ( is_array( $main_ingredient ) && 1 === count( $main_ingredient ) ) {
-					$main_ingredient = $main_ingredient[0];
-				}
-
-				$thumbnail = get_post_thumbnail_id( $post_id );
-				if ( empty( $thumbnail ) ) {
-					$thumbnail = false;
-				} else {
-					$thumbnail = wp_get_attachment_image_src( $thumbnail, 'thumbnail' );
-					if ( is_array( $thumbnail ) ) {
-						$thumbnail = array(
-							'src'    => $thumbnail[0],
-							'width'  => $thumbnail[1],
-							'height' => $thumbnail[2],
-						);
-					}
-				}
-
-				$return['recipes'][ $i ] = array(
-					'ID'              => $post_id,
-					'title'           => get_the_title( $post_id ),
-					'desc'            => $desc,
-					'type'            => $type,
-					'main_ingredient' => $main_ingredient,
-					'thumbnail'       => $thumbnail,
-				);
-
-				$i ++;
-
-			endwhile;
-
-			wp_reset_postdata();
-
-			// cache for 10 minutes
-			set_transient( 'recipes_list', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
-
-		endif;
-
 	}
+
+	if ( isset( $args['main_ingredient'] ) && ! empty( $args['main_ingredient'] ) ) {
+		$recipe_args['tax_query'][] = array(
+			'taxonomy' => 'recipe_main_ingredient',
+			'field'    => 'term_id',
+			'terms'    => ( is_array( $args['main_ingredient'] ) ) ? $args['main_ingredient'] : (int) $args['main_ingredient'],
+		);
+	}
+
+	if ( isset( $args['recipe_type'] ) && ! empty( $args['recipe_type'] ) ) {
+		$recipe_args['tax_query'][] = array(
+			'taxonomy' => 'recipe_type',
+			'field'    => 'term_id',
+			'terms'    => ( is_array( $args['recipe_type'] ) ) ? $args['recipe_type'] : (int) $args['recipe_type'],
+		);
+	}
+
+	if ( ! empty( $recipe_args['tax_query'] ) && count( $recipe_args['tax_query'] ) > 1 ) {
+		$recipe_args['tax_query']['relation'] = 'AND';
+	} elseif ( empty( $recipe_args['tax_query'] ) ) {
+		unset( $recipe_args['tax_query'] );
+	}
+
+	$return = array(
+		'total'      => 0,
+		'count'      => 0,
+		'recipes'    => array(),
+		'per_page'   => $recipe_args['posts_per_page'],
+		'paged'      => $recipe_args['paged'],
+		'query_args' => $recipe_args,
+	);
+
+	$the_query = new \WP_Query( $recipe_args );
+
+	if ( $the_query->have_posts() ):
+
+		$return['total'] = (int) $the_query->found_posts;
+		$return['count'] = (int) $the_query->post_count;
+		$i               = 1;
+
+		while ( $the_query->have_posts() ):
+			$the_query->the_post();
+			$post_id = get_the_ID();
+
+			$desc = get_post_meta( $post_id, 'recipe_desc', true );
+			$desc = ( empty( $desc ) ) ? false : $desc;
+
+			$type = wp_get_post_terms( $post_id, 'recipe_type' );
+			$type = ( empty( $type ) ) ? false : $type;
+			if ( is_array( $type ) && 1 === count( $type ) ) {
+				$type = $type[0];
+			}
+
+			$main_ingredient = wp_get_post_terms( $post_id, 'recipe_main_ingredient' );
+			$main_ingredient = ( empty( $main_ingredient ) ) ? false : $main_ingredient;
+			if ( is_array( $main_ingredient ) && 1 === count( $main_ingredient ) ) {
+				$main_ingredient = $main_ingredient[0];
+			}
+
+			$thumbnail = get_post_thumbnail_id( $post_id );
+			if ( empty( $thumbnail ) ) {
+				$thumbnail = false;
+			} else {
+				$thumbnail = wp_get_attachment_image_src( $thumbnail, 'thumbnail' );
+				if ( is_array( $thumbnail ) ) {
+					$thumbnail = array(
+						'src'    => $thumbnail[0],
+						'width'  => $thumbnail[1],
+						'height' => $thumbnail[2],
+					);
+				}
+			}
+
+			$return['recipes'][ $i ] = array(
+				'ID'              => $post_id,
+				'title'           => get_the_title( $post_id ),
+				'desc'            => $desc,
+				'type'            => $type,
+				'main_ingredient' => $main_ingredient,
+				'thumbnail'       => $thumbnail,
+			);
+
+			$i ++;
+
+		endwhile;
+
+		wp_reset_postdata();
+
+	endif;
+
 
 	$response = new \WP_REST_Response( $return );
 	$response = add_access_cache_headers( $response );
@@ -247,15 +278,17 @@ function list_main_ingredients() {
 	if ( 0 || false === ( $return = get_transient( 'main_ingredients_list' ) ) || IS_LOCAL ) {
 
 		$return = array(
-			'total'            => 0,
-			'main_ingredients' => array(),
+			'nice_name' => 'Main Ingredients',
+			'slug'      => 'recipe_main_ingredient',
+			'total'     => 0,
+			'values'    => array(),
 		);
 
 		$args = array(
 			'taxonomy' => 'recipe_main_ingredient',
 			'orderby'  => 'name',
 			'order'    => 'ASC',
-			'number'   => 25,
+			'number'   => 0,
 		);
 
 		$the_terms = get_terms( $args );
@@ -271,7 +304,7 @@ function list_main_ingredients() {
 					'has_children' => ( 0 === $term->parent ) ? false : true,
 				);
 
-				$return['main_ingredients'][ $term->term_id ] = $term_details;
+				$return['values'][ $term->term_id ] = $term_details;
 
 			endforeach;
 
@@ -292,15 +325,17 @@ function list_recipe_types() {
 	if ( 0 || false === ( $return = get_transient( 'recipe_types_list' ) ) || IS_LOCAL ) {
 
 		$return = array(
+			'nice_name' => 'Type',
+			'slug'      => 'recipe_type',
 			'total'        => 0,
-			'recipe_types' => array(),
+			'values' => array(),
 		);
 
 		$args = array(
 			'taxonomy' => 'recipe_type',
 			'orderby'  => 'name',
 			'order'    => 'ASC',
-			'number'   => 25,
+			'number'   => 0,
 		);
 
 		$the_terms = get_terms( $args );
@@ -316,7 +351,7 @@ function list_recipe_types() {
 					'has_children' => ( 0 === $term->parent ) ? false : true,
 				);
 
-				$return['recipe_types'][ $term->term_id ] = $term_details;
+				$return['values'][ $term->term_id ] = $term_details;
 
 			endforeach;
 
@@ -378,13 +413,13 @@ function list_main_ingredient_recipes( $request ) {
 				$desc = get_post_meta( $post_id, 'recipe_desc', true );
 				$desc = ( empty( $desc ) ) ? false : $desc;
 
-				$type = wp_get_post_terms( $post_id, 'recipe_type' );
+				$type = get_the_terms( $post_id, 'recipe_type' );
 				$type = ( empty( $type ) ) ? false : $type;
 				if ( is_array( $type ) && 1 === count( $type ) ) {
 					$type = $type[0];
 				}
 
-				$main_ingredient = wp_get_post_terms( $post_id, 'recipe_main_ingredient' );
+				$main_ingredient = get_the_terms( $post_id, 'recipe_main_ingredient' );
 				$main_ingredient = ( empty( $main_ingredient ) ) ? false : $main_ingredient;
 				if ( is_array( $main_ingredient ) && 1 === count( $main_ingredient ) ) {
 					$main_ingredient = $main_ingredient[0];
