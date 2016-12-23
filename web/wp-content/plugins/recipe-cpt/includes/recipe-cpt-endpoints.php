@@ -203,8 +203,7 @@ function list_recipes( $request ) {
 		'total'      => 0,
 		'count'      => 0,
 		'recipes'    => array(),
-		'per_page'   => $recipe_args['posts_per_page'],
-		'paged'      => $recipe_args['paged'],
+		'posts_per_page'   => $recipe_args['posts_per_page'],
 		'query_args' => $recipe_args,
 	);
 
@@ -279,7 +278,7 @@ function list_main_ingredients() {
 
 		$return = array(
 			'nice_name' => 'Main Ingredients',
-			'slug'      => 'recipe_main_ingredient',
+			'slug'      => 'main_ingredient',
 			'total'     => 0,
 			'values'    => array(),
 		);
