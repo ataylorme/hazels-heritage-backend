@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8700ff1e21d4e237be8dbb73b5b378c0",
-    "content-hash": "b7d1955da33ee6c4c54636daed4bf16a",
+    "hash": "f3fa9b9c38b2423b0d0c018bca54a4d3",
+    "content-hash": "e494e94f831e4fbeabe6764035c1ddd0",
     "packages": [
         {
             "name": "composer/installers",
@@ -164,16 +164,16 @@
         },
         {
             "name": "pantheon-systems/wordpress",
-            "version": "4.6.1",
+            "version": "4.7",
             "source": {
                 "type": "git",
                 "url": "git@github.com:pantheon-systems/WordPress.git",
-                "reference": "4.6.1"
+                "reference": "4.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/pantheon-systems/WordPress/archive/4.6.1.zip",
-                "reference": "4.6.1",
+                "url": "https://github.com/pantheon-systems/WordPress/archive/4.7.zip",
+                "reference": "4.7",
                 "shasum": null
             },
             "require": {
@@ -330,6 +330,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/members/"
+        },
+        {
+            "name": "wpackagist-plugin/pantheon-advanced-page-cache",
+            "version": "0.1.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/pantheon-advanced-page-cache/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/pantheon-advanced-page-cache.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/pantheon-advanced-page-cache/"
         },
         {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",

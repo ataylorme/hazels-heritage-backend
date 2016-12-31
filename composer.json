@@ -21,15 +21,15 @@
       "type": "package",
       "package": {
         "name": "pantheon-systems/wordpress",
-        "version": "4.6.1",
+        "version": "4.7",
         "dist": {
-          "url": "https://github.com/pantheon-systems/WordPress/archive/4.6.1.zip",
+          "url": "https://github.com/pantheon-systems/WordPress/archive/4.7.zip",
           "type": "zip"
         },
         "source": {
           "url": "git@github.com:pantheon-systems/WordPress.git",
           "type": "git",
-          "reference": "4.6.1"
+          "reference": "4.7"
         },
         "type": "wordpress-core",
         "require": {
@@ -45,11 +45,12 @@
     "php": ">=7.0",
     "composer/installers": "~1.0",
     "vlucas/phpdotenv": "^2.4.0",
-    "pantheon-systems/wordpress": "^4.6.1",
+    "pantheon-systems/wordpress": "^4.7",
     "roots/wp-password-bcrypt": "^1.0.0",
     "wpackagist-plugin/wp-cfm": "^1.4.5",
     "wpackagist-plugin/cmb2": "^2.2.3.1",
     "wpackagist-plugin/members": "^1.1.2",
+    "wpackagist-plugin/pantheon-advanced-page-cache": "^0.1.2",
     "wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.10.2"
   },
   "config": {
