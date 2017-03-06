@@ -11,11 +11,6 @@ txtcyn=$(tput setaf 6) # Cyan
 txtwht=$(tput setaf 7) # White
 txtrst=$(tput sgr0) # Text reset.
 
-# Install Terminus
-echo -e "\n${txtylw}Installing Terminus ${txtrst}"
-sudo curl https://github.com/pantheon-systems/cli/releases/download/0.11.2/terminus.phar -L -o /usr/local/bin/terminus
-sudo chmod +x /usr/local/bin/terminus
-
 COMMIT_MESSAGE="$(git show --name-only --decorate)"
 
 cd $HOME
@@ -34,7 +29,7 @@ git fetch
 
 # Log into terminus.
 echo -e "\n${txtylw}Logging into Terminus ${txtrst}"
-terminus auth login --machine-token=$PANTHEON_MACHINE_TOKEN
+terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
 
 # Check if we are NOT on the master branch
 if [ $CIRCLE_BRANCH != "master" ]
@@ -63,19 +58,27 @@ then
 	echo -e "\n${txtylw}Checking for the multidev environment ${normalize_branch} via Terminus ${txtrst}"
 
 	# Get a list of all environments
-	PANTHEON_ENVS="$(terminus site environments --site=$PANTHEON_SITE_UUID --format=bash)"
-	terminus site environments --site=$PANTHEON_SITE_UUID
+	PANTHEON_ENVS="$(terminus multidev:list $PANTHEON_SITE_UUID --format=list --field=Name)"
+	terminus multidev:list $PANTHEON_SITE_UUID --fields=Name
+
+	MULTIDEV_FOUND=0
+
+	while read -r line; do
+    	if [[ "${line}" == "${normalize_branch}" ]]
+    	then
+    		MULTIDEV_FOUND=1
+    	fi
+	done <<< "$PANTHEON_ENVS"
 
 	# If the multidev for this branch is found
-	if [[ ${PANTHEON_ENVS} == *"${normalize_branch}"* ]]
+	if [[ "$MULTIDEV_FOUND" -eq 1 ]]
 	then
 		# Send a message
 		echo -e "\n${txtylw}Multidev found! ${txtrst}"
 	else
 		# otherwise, create the multidev branch
 		echo -e "\n${txtylw}Multidev not found, creating the multidev branch ${normalize_branch} via Terminus ${txtrst}"
-		echo -e "Running terminus site create-env --site=$PANTHEON_SITE_UUID --to-env=$normalize_branch --from-env=dev"
-		terminus site create-env --site=$PANTHEON_SITE_UUID --to-env=$normalize_branch --from-env=dev
+		terminus multidev:create $PANTHEON_SITE_UUID.dev $normalize_branch
 		git fetch
 	fi
 

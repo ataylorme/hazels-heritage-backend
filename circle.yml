@@ -9,12 +9,14 @@ machine:
   hosts:
     hazels-heritage.dev: 127.0.0.1
 
+  environment:
+      PATH: "${PATH}:${HOME}/terminus/bin"
+
 dependencies:
   cache_directories:
     - ~/.composer/cache
     - ~/.terminus/tokens
-    - /usr/local/bin/terminus
-    - ~/digital-ocean
+    - ~/terminus
 
   pre:
     # Dynamic hosts through Pantheon mean constantly checking interactively
@@ -33,6 +35,9 @@ dependencies:
 
     - git config --global user.email $GIT_EMAIL
     - git config --global user.name $GIT_USERNAME
+
+    # Install Terminus
+    - ./bin/install_terminus.sh
 
   override:
     - ./bin/build.sh
