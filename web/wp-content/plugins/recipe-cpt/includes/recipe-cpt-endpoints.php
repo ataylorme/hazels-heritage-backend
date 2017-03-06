@@ -274,8 +274,6 @@ function list_recipes( $request ) {
 
 function list_main_ingredients() {
 
-	if ( 0 || false === ( $return = get_transient( 'main_ingredients_list' ) ) || IS_LOCAL ) {
-
 		$return = array(
 			'nice_name' => 'Main Ingredients',
 			'slug'      => 'main_ingredient',
@@ -307,12 +305,7 @@ function list_main_ingredients() {
 
 			endforeach;
 
-			// cache for 10 minutes
-			set_transient( 'main_ingredients_list', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
-
 		endif;
-	}
-
 	$response = new \WP_REST_Response( $return );
 	$response = add_access_cache_headers( $response );
 
@@ -320,8 +313,6 @@ function list_main_ingredients() {
 }
 
 function list_recipe_types() {
-
-	if ( 0 || false === ( $return = get_transient( 'recipe_types_list' ) ) || IS_LOCAL ) {
 
 		$return = array(
 			'nice_name' => 'Type',
@@ -354,11 +345,7 @@ function list_recipe_types() {
 
 			endforeach;
 
-			// cache for 10 minutes
-			set_transient( 'recipe_types_list', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
-
 		endif;
-	}
 
 	$response = new \WP_REST_Response( $return );
 	$response = add_access_cache_headers( $response );
@@ -369,8 +356,6 @@ function list_recipe_types() {
 function list_main_ingredient_recipes( $request ) {
 
 	$term_id = (int) $request['id'];
-
-	if ( 0 || false === ( $return = get_transient( 'main_ingredient_' . $term_id . '_recipes_list' ) ) || IS_LOCAL ) {
 
 		$term_name = get_term_field( 'name', $term_id, 'recipe_main_ingredient' );
 		if ( null === $term_name || is_wp_error( $term_name ) ) {
@@ -453,12 +438,7 @@ function list_main_ingredient_recipes( $request ) {
 
 			wp_reset_postdata();
 
-			// cache for 10 minutes
-			set_transient( 'main_ingredient_' . $term_id . '_recipes_list', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
-
 		endif;
-
-	}
 
 	$response = new \WP_REST_Response( $return );
 	$response = add_access_cache_headers( $response );
@@ -469,8 +449,6 @@ function list_main_ingredient_recipes( $request ) {
 function list_recipe_type_recipes( $request ) {
 
 	$term_id = (int) $request['id'];
-
-	if ( 0 || false === ( $return = get_transient( 'recipe_type_' . $term_id . '_recipes_list' ) ) || IS_LOCAL ) {
 
 		$term_name = get_term_field( 'name', $term_id, 'recipe_main_ingredient' );
 		if ( null === $term_name || is_wp_error( $term_name ) ) {
@@ -553,12 +531,7 @@ function list_recipe_type_recipes( $request ) {
 
 			wp_reset_postdata();
 
-			// cache for 10 minutes
-			set_transient( 'recipe_type_' . $term_id . '_recipes_list', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
-
 		endif;
-
-	}
 
 	$response = new \WP_REST_Response( $return );
 	$response = add_access_cache_headers( $response );
@@ -568,8 +541,6 @@ function list_recipe_type_recipes( $request ) {
 
 function recipe_details( $request ) {
 	$post_id = (int) $request['id'];
-
-	if ( 0 || false === ( $return = get_transient( 'recipe_' . $post_id . '_details' ) ) || IS_LOCAL ) {
 
 		$desc = get_post_meta( $post_id, 'recipe_desc', true );
 		$desc = ( empty( $desc ) ) ? false : $desc;
@@ -624,10 +595,6 @@ function recipe_details( $request ) {
 
 			$return[ $meta_field ] = ( empty( $value ) ) ? false : $value;
 		}
-
-		// cache for 10 minutes
-		set_transient( 'recipe_' . $post_id . '_details', $return, apply_filters( 'posts_ttl', 60 * 10 ) );
-	}
 
 	$response = new \WP_REST_Response( $return );
 	$response = add_access_cache_headers( $response );
