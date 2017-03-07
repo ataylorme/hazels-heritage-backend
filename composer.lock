@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8b8b1ab95d2e61b1d286587924922105",
-    "content-hash": "228463f4756dab59aedcc18e9200e8d9",
+    "content-hash": "91c6eaea265bc3619791b44475c9279d",
     "packages": [
         {
             "name": "composer/installers",
@@ -112,7 +111,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-08-13 20:53:52"
+            "time": "2016-08-13T20:53:52+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -160,20 +159,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2015-06-11 15:15:30"
+            "time": "2015-06-11T15:15:30+00:00"
         },
         {
             "name": "pantheon-systems/wordpress",
-            "version": "4.7.2",
+            "version": "4.7.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:pantheon-systems/WordPress.git",
-                "reference": "4.7.2"
+                "reference": "4.7.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/pantheon-systems/WordPress/archive/4.7.2.zip",
-                "reference": "4.7.2",
+                "url": "https://github.com/pantheon-systems/WordPress/archive/4.7.3.zip",
+                "reference": "4.7.3",
                 "shasum": null
             },
             "require": {
@@ -239,7 +238,7 @@
             "keywords": [
                 "wordpress wp bcrypt password"
             ],
-            "time": "2016-03-01 16:27:06"
+            "time": "2016-03-01T16:27:06+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -289,7 +288,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2017-02-03 22:05:04"
+            "time": "2017-02-03T22:05:04+00:00"
         },
         {
             "name": "wpackagist-plugin/cmb2",
