@@ -1,4 +1,13 @@
 <?php
+/**
+ * Redirect www to non-www
+ */
+if ( substr( $_SERVER['HTTP_HOST'], 0, 4 ) === 'www.' ) {
+	header( 'Location: http' . ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ? 's' : '' ) . '://' . substr( $_SERVER['HTTP_HOST'], 4 ) . $_SERVER['REQUEST_URI'] );
+	exit;
+}
+
+
 /*
  * Don't show deprecations
  */
@@ -164,8 +173,11 @@ if ( isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ):
 		if ( isset( $_SERVER['HTTP_USER_AGENT_HTTPS'] ) && $_SERVER['HTTP_USER_AGENT_HTTPS'] == 'ON' ) {
 			$scheme = 'https';
 		}
-		define( 'WP_HOME', $scheme . '://' . $_SERVER['HTTP_HOST'] );
-		define( 'WP_SITEURL', $scheme . '://' . $_SERVER['HTTP_HOST'] . '/wp' );
+
+		$url = ( $_ENV['PANTHEON_ENVIRONMENT'] === 'live' ) ? 'https://backend.hazelsheritage.com' : $scheme . '://' . $_SERVER['HTTP_HOST'];
+
+		define( 'WP_HOME', $url );
+		define( 'WP_SITEURL', $url . '/wp' );
 
 		/*
 		* Define wp-content directory outside of WordPress directory
