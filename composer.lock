@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc0b8e8f00780ed09303be987a7fadb2",
+    "content-hash": "3a32aa890ae98dc77fba196b63362710",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045"
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/79ad876c7498c0bbfe7eed065b8651c93bfd6045",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045",
+                "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
                 "shasum": ""
             },
             "require": {
@@ -63,6 +63,7 @@
                 "Hurad",
                 "ImageCMS",
                 "Kanboard",
+                "Lan Management System",
                 "MODX Evo",
                 "Mautic",
                 "Maya",
@@ -86,6 +87,7 @@
                 "croogo",
                 "dokuwiki",
                 "drupal",
+                "eZ Platform",
                 "elgg",
                 "expressionengine",
                 "fuelphp",
@@ -102,6 +104,7 @@
                 "mediawiki",
                 "modulework",
                 "moodle",
+                "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
@@ -118,7 +121,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-04-24T06:37:16+00:00"
+            "time": "2017-08-09T07:53:48+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -170,16 +173,16 @@
         },
         {
             "name": "pantheon-systems/wordpress",
-            "version": "4.8",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:pantheon-systems/WordPress.git",
-                "reference": "4.8"
+                "reference": "4.9.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/pantheon-systems/WordPress/archive/4.8.zip",
-                "reference": "4.8",
+                "url": "https://github.com/pantheon-systems/WordPress/archive/4.9.1.zip",
+                "reference": "4.9.1",
                 "shasum": null
             },
             "require": {
@@ -253,24 +256,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "7ac2c1cef304f5bd5a8d40750fbcbdd49333b9e5"
+                "reference": "ec37c495d56b68f103acafa95fec5ed39b14d7db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/7ac2c1cef304f5bd5a8d40750fbcbdd49333b9e5",
-                "reference": "7ac2c1cef304f5bd5a8d40750fbcbdd49333b9e5",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/ec37c495d56b68f103acafa95fec5ed39b14d7db",
+                "reference": "ec37c495d56b68f103acafa95fec5ed39b14d7db",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.0"
+                "phpunit/phpunit": "^4.8.35 || ^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -295,11 +298,11 @@
                 "env",
                 "environment"
             ],
-            "time": "2017-02-03T22:05:04+00:00"
+            "time": "2017-11-24T14:28:50+00:00"
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.4",
+            "version": "2.2.6.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cmb2/",
@@ -307,7 +310,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/cmb2.zip",
+                "url": "https://downloads.wordpress.org/plugin/cmb2.zip?timestamp=1511815857",
                 "reference": null,
                 "shasum": null
             },
@@ -359,7 +362,7 @@
         },
         {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",
-            "version": "1.11.3",
+            "version": "1.11.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/sendgrid-email-delivery-simplified/",
@@ -367,7 +370,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip?timestamp=1495021825",
+                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip?timestamp=1503913160",
                 "reference": null,
                 "shasum": null
             },
