@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "3a32aa890ae98dc77fba196b63362710",
@@ -302,7 +302,7 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.6.2",
+            "version": "2.5.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cmb2/",
@@ -310,7 +310,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/cmb2.zip?timestamp=1511815857",
+                "url": "https://downloads.wordpress.org/plugin/cmb2.zip?timestamp=1544311525",
                 "reference": null,
                 "shasum": null
             },
