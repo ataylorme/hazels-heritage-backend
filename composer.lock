@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "3a32aa890ae98dc77fba196b63362710",
@@ -182,8 +182,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/pantheon-systems/WordPress/archive/4.9.1.zip",
-                "reference": "4.9.1",
-                "shasum": null
+                "reference": "4.9.1"
             },
             "require": {
                 "johnpbloch/wordpress-core-installer": "~0.1"
@@ -302,7 +301,7 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.6.2",
+            "version": "2.7.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cmb2/",
@@ -310,9 +309,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/cmb2.zip?timestamp=1511815857",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/cmb2.zip?timestamp=1579634658"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -330,9 +327,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/members.1.1.3.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/members.1.1.3.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -350,9 +345,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pantheon-advanced-page-cache.0.1.5.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/pantheon-advanced-page-cache.0.1.5.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -370,9 +363,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip?timestamp=1503913160",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip?timestamp=1503913160"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -390,9 +381,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-cfm.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/wp-cfm.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
